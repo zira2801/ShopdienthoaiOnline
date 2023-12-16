@@ -10,6 +10,6 @@ class CategoryWidget extends StatefulWidget {
 class _CategoryWidgetState extends State<CategoryWidget> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Category'), backgroundColor: Colors.blue[300],),);;
+    return Scaffold(appBar: AppBar(title: const Text('Category 20'), backgroundColor: Colors.blue[300],),);;
   }
 }
