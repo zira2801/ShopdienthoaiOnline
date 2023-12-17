@@ -41,10 +41,10 @@ class _HomePageState extends State<HomePage> {
               tabBorderRadius: 25,
               color: Colors.grey,
               activeColor: Colors.black,
-              tabActiveBorder: Border(top: BorderSide(color: Colors.black,width: 1),bottom: BorderSide(color: Colors.black,width: 1),right: BorderSide(color: Colors.black,width: 1),left: BorderSide(color: Colors.black,width: 1)),
+              tabActiveBorder: const Border(top: BorderSide(color: Colors.black,width: 1),bottom: BorderSide(color: Colors.black,width: 1),right: BorderSide(color: Colors.black,width: 1),left: BorderSide(color: Colors.black,width: 1)),
               haptic: true,
               iconSize: 20,
-              padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
               gap: 8,tabs: const [
             GButton(icon: Icons.home,text: 'Home',),
             GButton(icon: Icons.category,text: 'Category',),

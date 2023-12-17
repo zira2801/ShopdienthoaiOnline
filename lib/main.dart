@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:shop/page/homepage.dart';
+import 'package:shop/route/app_page.dart';
+import 'package:shop/route/app_route.dart';
+import 'package:shop/view/dasdbord_binding.dart';
 
 void main() {
-  runApp(const MaterialApp(debugShowCheckedModeBanner: false,
-  home: HomePage(),));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,6 +16,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Home',style: TextStyle(color: Colors.white),),backgroundColor: Colors.amber,));
+    return GetMaterialApp(
+      getPages: AppPage.list,
+      initialBinding: DashboardBinding(),
+      initialRoute: AppRoute.dasdboard,
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
