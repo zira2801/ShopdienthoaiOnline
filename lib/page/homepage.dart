@@ -36,7 +36,7 @@ class _HomePageState extends State<HomePage> {
           border: Border(top: BorderSide(color: Colors.grey.shade300))
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15.0,vertical: 15),
+          padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 15),
           child: GNav(
               tabBorderRadius: 25,
               color: Colors.grey,
