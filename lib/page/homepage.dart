@@ -15,8 +15,8 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const List<Widget> _widgetOption = <Widget>[
     HomeWidget(),
-    CategoryWidget(),
     MenuWidget(),
+    CategoryWidget(),
     AccountWidget()
   ];
 
@@ -47,8 +47,8 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
               gap: 8,tabs: const [
             GButton(icon: Icons.home,text: 'Home',),
-            GButton(icon: Icons.category,text: 'Category',),
             GButton(icon: Icons.menu_outlined,text: 'Menu',),
+            GButton(icon: Icons.category,text: 'Category',),
             GButton(icon: Icons.person,text: 'Account',)
           ],
           selectedIndex: _selectedIndex,

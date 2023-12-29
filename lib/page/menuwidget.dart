@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop/component/mainheader.dart';
 
 class MenuWidget extends StatefulWidget {
   const MenuWidget({super.key});
@@ -10,6 +11,13 @@ class MenuWidget extends StatefulWidget {
 class _MenuWidgetState extends State<MenuWidget> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(title: const Text('Menu'), backgroundColor: Colors.blue[300],),);;
+    return SafeArea(child: Column(
+      children: [
+      const  MainHeader(),
+        Expanded(child: Container(
+
+        ))
+      ],
+    )) ;
   }
 }

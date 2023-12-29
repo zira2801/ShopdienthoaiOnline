@@ -1,4 +1,7 @@
 import 'package:get/get.dart';
+import 'package:shop/device/local_service/local_adbanner.dart';
+import 'package:shop/device/local_service/local_category_services.dart';
+import 'package:shop/device/local_service/local_product_services.dart';
 import 'package:shop/device/remote_banner.dart';
 import 'package:shop/device/remote_category.dart';
 import 'package:shop/device/remote_product_phobien.dart';
@@ -14,9 +17,16 @@ class HomeController extends GetxController {
   RxBool isBannerLoading = false.obs;
   RxBool isCategoryPhoBienLoading = false.obs;
   RxBool isProductPhoBienLoading = false.obs;
+
+  final LocalAdBannerService _localAdBannerService = LocalAdBannerService();
+   final LocalCategoryService _localCategoryService = LocalCategoryService();
+    final LocalProductService _localProductService = LocalProductService();
   @override
-  void onInit() {
+  void onInit() async {
     // TODO: implement onInit
+   await _localAdBannerService.init();
+   await _localCategoryService.init();
+   await _localProductService.init();
     getAdBanners();
     getCategory();
     getProductPhoBien();
@@ -25,9 +35,14 @@ class HomeController extends GetxController {
   void getAdBanners() async{
     try{
     isBannerLoading(true);
+
+    if(_localAdBannerService.getAdBanner().isNotEmpty){
+      bannerList.assignAll(_localAdBannerService.getAdBanner());
+    }
     var result = await RemoteBannerService().get();
     if(result != null){
       bannerList.assignAll(adBannerListFromJson(result.body));
+      _localAdBannerService.assignAllAdBanners(adBanners: adBannerListFromJson(result.body));
     }
     }
     finally{
@@ -39,9 +54,13 @@ class HomeController extends GetxController {
   void getCategory() async{
     try{
       isCategoryPhoBienLoading(true);
+      if(_localCategoryService.getListCategoryPhoBien().isNotEmpty){
+        PhoBiencategoryList.assignAll(_localCategoryService.getListCategoryPhoBien());
+      }
       var result = await RemoteCategory().get();
       if(result != null){
         PhoBiencategoryList.assignAll(CategoryListFromJson(result.body));
+        _localCategoryService.assignAllCategoryPhoBien(listCategoryPhoBien: CategoryListFromJson(result.body));
       }
     }
     finally{
@@ -53,9 +72,13 @@ class HomeController extends GetxController {
   void getProductPhoBien() async{
     try{
       isProductPhoBienLoading(true);
+      if(_localProductService.getListProductPhoBien().isNotEmpty){
+        PhoBienproductList.assignAll(_localProductService.getListProductPhoBien());
+      }
       var result = await RemoteProductPhobien().get();
       if(result != null){
         PhoBienproductList.assignAll(ProductPhoBienListFromJson(result.body));
+        _localProductService.assignAllProductPhoBien(listProductPhoBien: ProductPhoBienListFromJson(result.body));
       }
     }
     finally{
