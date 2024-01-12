@@ -12,7 +12,7 @@ class ProductPhoBienTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(titile,style: const TextStyle(color: Colors.black,fontSize: 18),),
+          Text(titile,style: const TextStyle(color: Colors.black,fontSize: 15),),
 
           const Text("See more",style: TextStyle(color: Colors.grey),)
         ],

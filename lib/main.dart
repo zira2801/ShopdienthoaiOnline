@@ -11,6 +11,11 @@ import 'package:shop/route/app_page.dart';
 import 'package:shop/route/app_route.dart';
 import 'package:shop/view/dasdbord_binding.dart';
 
+import 'Provider/tab_provider.dart';
+import 'package:provider/provider.dart';
+
+import 'model/tag_adapter.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
@@ -19,7 +24,14 @@ void main() async {
   Hive.registerAdapter(AdBannerAdapter());
   Hive.registerAdapter(CategoryAdapter());
   Hive.registerAdapter(ProductAdapter());
-  runApp(const MyApp());
+  Hive.registerAdapter(TagAdapter());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => TabProvider())
+    ],
+    child: const MyApp(),
+  ));
+
 }
 
 class MyApp extends StatelessWidget {

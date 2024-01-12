@@ -2,8 +2,14 @@
 import 'dart:convert';
 import 'package:hive/hive.dart';
 part 'category.g.dart';
+//List Category phổ biến
 List<Category> CategoryListFromJson(String val) => List<Category>.from(
     json.decode(val)['data'].map((category) => Category.popularCategoryFromJson(category))
+);
+
+//List Category
+List<Category> categoryListFromJson(String val) => List<Category>.from(
+    json.decode(val)['data'].map((category) => Category.CategoryFromJson(category))
 );
 
 @HiveType(typeId: 2)
@@ -21,4 +27,9 @@ class Category{
       Category(id: data['id'],
           name: data['attributes']['category']['data']['attributes']['name'],
           image:data['attributes']['category']['data']['attributes']['image']['data']['attributes']['url']);
+
+  factory Category.CategoryFromJson(Map<String,dynamic> data) =>
+      Category(id: data['id'],
+          name: data['attributes']['name'],
+          image:data['attributes']['image']['data']['attributes']['url']);
 }

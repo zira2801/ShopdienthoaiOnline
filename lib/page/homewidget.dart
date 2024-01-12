@@ -12,15 +12,27 @@ import 'package:shop/view/slider_view/carouse_slider_view.dart';
 
 import '../loading/carouseSliderHome.dart';
 
-class HomeWidget extends StatelessWidget {
+class HomeWidget extends StatefulWidget {
   const HomeWidget({super.key});
 
+  @override
+  State<HomeWidget> createState() => _HomeWidgetState();
+}
+
+class _HomeWidgetState extends State<HomeWidget> {
+  int _selectedIndex = 0;
+
+  void updateSelectedIndex(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Center(
       child: Column(
         children: [
-        const  MainHeader(),
+         const MainHeader(),
           Expanded(child: SingleChildScrollView(
             physics:const BouncingScrollPhysics(),
             child: Column(children: [
@@ -29,7 +41,7 @@ class HomeWidget extends StatelessWidget {
                   return CarouselSliderView(listBanner: homeController.bannerList,);
                 }
                 else{
-                  return CarouseLoading();
+                  return const CarouseLoading();
                 }
               }),
               const CategoryTitle(titile: "Danh mục phổ biến"),
@@ -38,17 +50,17 @@ class HomeWidget extends StatelessWidget {
                   return CategoryView(listCategory: homeController.PhoBiencategoryList,);
                 }
                 else{
-                  return CategoryLoading();
+                  return const CategoryLoading();
                 }
               }),
               const SizedBox(height: 10,),
-              const ProductPhoBienTitle(titile: "Điện thoại bạn nhiều nhất"),
+              const ProductPhoBienTitle(titile: "Điện thoại bán nhiều nhất"),
               Obx(() {
                 if(homeController.PhoBienproductList.isNotEmpty){
                   return ProductPhoBienView(listProductPhoBien: homeController.PhoBienproductList) ;
                 }
                 else{
-                  return ProductPhoBienLoading() ;
+                  return const ProductPhoBienLoading() ;
                 }
               }),
             ],),

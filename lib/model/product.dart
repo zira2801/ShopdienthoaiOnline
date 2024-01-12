@@ -31,7 +31,7 @@ class Product{
           mota: data['attributes']['product']['data']['attributes']['mota'],
           images: List<String>.from(data['attributes']['product']['data']['attributes']['images']['data'].map((image) =>
           image['attributes']['url'])),
-      tags: []);
+      tags:  List<Tag>.from(data['attributes']['product']['data']['attributes']['tags']['data'].map((val) => Tag.fromJson(val))));
 
   factory Product.ProductFromJson(Map<String,dynamic> data) =>
       Product(id: data['id'],

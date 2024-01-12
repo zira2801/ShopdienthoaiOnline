@@ -6,7 +6,7 @@ class RemoteProductPhobien{
   var remoteUrl = '$baseUrl/api/product-pho-biens';
   
   Future<dynamic> get() async {
-    var response = await client.get(Uri.parse('$remoteUrl?populate=product.images'));
+    var response = await client.get(Uri.parse('$remoteUrl?populate=product.images&populate=product.tags'));
     return response;
   }
 }
